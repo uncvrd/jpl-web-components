@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <script type="module" src="/build/jpl-web-components.esm.js"></script>
+  <script nomodule src="/build/jpl-web-components.js"></script>
+
+  <link rel="stylesheet" href="/build/jpl-web-components.css">
+
+</head>
+<body>
+
+  <jpl-horizontal-stepper>
+    <jpl-step
+      route="/"
+      state="done"
+      label="step one">
+    </jpl-step>
+    <jpl-step
+      route="/home"
+      label="step two"
+      optional="true"
+      >
+    </jpl-step>
+    <jpl-step 
+      label="step three"
+      >
+    </jpl-step>
+  </jpl-horizontal-stepper>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+.horizontal-stepper-header-container {
+  display: flex;
+  align-items: flex-start;
+  white-space: nowrap;
+}

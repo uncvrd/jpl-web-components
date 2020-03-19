@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+}
+
+:host(.is-last-step) {
+  flex: unset
+}
+
+a {
+  text-decoration: none;
+}
+
+.stepper-horizontal-line {
+  border-top-color: rgba(var(--app-dark-color-rgb), .12);
+  border-top-width: 1px;
+  border-top-style: solid;
+  flex: auto;
+  height: 0;
+  margin: 0;
+  min-width: 0;
+  position: relative;
+  top: 36px;
+}

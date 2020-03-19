@@ -1,0 +1,106 @@
+:host(.horizontal-stepper-header) {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: auto;
+  padding: 24px
+}
+
+:host(.horizontal-stepper-header)::before,
+:host(.horizontal-stepper-header)::after {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: rgba(var(--app-dark-color-rgb), .12);
+  content: "";
+  display: inline-block;
+  height: 0;
+  position: absolute;
+  top: 36px;
+  width: calc(50% - 20px);
+}
+
+:host(.horizontal-stepper-header)::before {
+  left: 0;
+}
+
+:host(.horizontal-stepper-header)::after {
+  right: 0;
+}
+
+:host(.horizontal-stepper-header.is-first-header)::before {
+  border-top-color: transparent;
+}
+
+:host(.horizontal-stepper-header.is-last-header)::after {
+  border-top-color: transparent;
+}
+
+:host(.step-header) {
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+:host(.step-header:hover) {
+  background-color: rgba(var(--app-dark-color-rgb), 0.04);
+}
+
+.step-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: relative;
+  background-color: rgba(var(--app-dark-color-rgb),0.54);
+  color: var(--app-light-color);
+}
+
+.step-index {
+  line-height: 1;
+}
+
+.step-icon-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-icon-selected, .step-icon-state-done, .step-icon-state-edit {
+  background-color: var(--app-primary-color);
+  color: var(--app-light-color);
+}
+
+.step-label {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 50px;
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  padding-top: 16px;
+  width: 100%;
+  color: rgba(var(--app-dark-color-rgb),0.54);
+  line-height: 1.2;
+}
+
+.step-label-selected {
+  font-weight: 500;
+}
+
+.step-label.step-label-active {
+  color: var(--app-dark-color);
+}
+
+.step-optional {
+  color: rgba(var(--app-dark-color-rgb),0.54);
+  font-size: 12px;
+  line-height: 1.2;
+}

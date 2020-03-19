@@ -1,0 +1,10 @@
+:root {
+
+    font-family: 'Roboto';
+
+    --app-primary-color: #e31937;
+    --app-light-color: #ffffff;
+    --app-dark-color: #000000;
+    --app-dark-color-rgb: 0, 0, 0;
+    --app-text-color: #000000;
+}
