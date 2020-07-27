@@ -1,21 +1,20 @@
-import { Component, Host, h, Element, Prop } from '@stencil/core';
-import { StepState } from '../../../utils/stepper';
+import { Component, Host, h, Element, Prop } from "@stencil/core";
+import { StepState } from "../../../utils/stepper";
 
 @Component({
-  tag: 'jpl-step',
-  styleUrl: 'step.css',
-  shadow: true
+  tag: "jpl-step",
+  styleUrl: "step.css",
+  shadow: true,
 })
 export class Step {
-
   /** Pass a URL the step should route to (this route is added to an href in an anchor tag)
    *  For example, say we have a url: https://jpl.nasa.gov
    *  For step one we need to pass the `route` attribute: https://jpl.nasa.gov/form/step1
    *  For step two: https://jpl.nasa.gov/form/step2
-   * 
+   *
    *  If you do not add a route attribute, the step will not be active
    *  So this is a good way of preventing users from skipping steps
-  */
+   */
   @Prop() route: string;
 
   /** Internal property that displays the step number IF no `state` is added */
@@ -30,7 +29,7 @@ export class Step {
    *  - edit (displays pencil icon)
    *  - done (displays checkmark icon)
    *  - error (displays warning icon)
-   * 
+   *
    *  This property can also intake any Ionicon icon name instead.
    *  For example, add the ionicon "add" icon to show a (+) icon
    */
@@ -50,36 +49,53 @@ export class Step {
 
   @Element() el: HTMLJplStepElement;
 
-  componentWillLoad() {
-  }
+  @Prop() component: "button" | "anchor" = "anchor";
+
+  /** Values used if the component is set as type "button" */
+  @Prop() name: string;
+
+  @Prop() value: string;
 
   render() {
 
+    let header = (
+      <jpl-step-header
+        class={{
+          "is-first-header": this.isFirst,
+          "is-last-header": this.isLast,
+        }}
+        index={this.index}
+        label={this.label}
+        state={this.state}
+        selected={window.location.pathname == this.route}
+        active={this.route != null}
+        optional={this.optional}
+        errorMessage={this.errorMessage}
+      ></jpl-step-header>
+    );
+
+    let element;
+
+    if (this.component == "anchor") {
+      element = <a href={this.route}>{header}</a>
+    } else {
+      element = <button type="submit" name={this.name} value={this.value}>{header}</button>
+    }
+
     const elements = [
-      <a href={this.route}>
-        <jpl-step-header
-          class={{
-            'is-first-header': this.isFirst,
-            'is-last-header': this.isLast
-          }}
-          index={this.index}
-          label={this.label}
-          state={this.state}
-          selected={window.location.pathname == this.route}
-          active={this.route != null}
-          optional={this.optional}
-          errorMessage={this.errorMessage}></jpl-step-header>
-      </a>
-    ]
+      element
+    ];
 
     if (!this.isLast) {
-      elements.push(<div class="stepper-horizontal-line"></div>)
+      elements.push(<div class="stepper-horizontal-line"></div>);
     }
 
     return (
-      <Host class={{
-        'is-last-step': this.isLast
-      }}>
+      <Host
+        class={{
+          "is-last-step": this.isLast,
+        }}
+      >
         {elements}
       </Host>
     );
