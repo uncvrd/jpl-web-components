@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop } from "@stencil/core";
+import { Component, Host, h, Element, Prop, Listen } from "@stencil/core";
 import { StepState } from "../../../utils/stepper";
 
 @Component({
@@ -55,6 +55,20 @@ export class Step {
   @Prop() name: string;
 
   @Prop() value: string;
+
+  @Listen('click')
+  onClick(event: Event) {
+    const form = this.el.closest('form');
+    if (form) {
+      event.preventDefault();
+      const fakeSubmit = document.createElement('button');
+      fakeSubmit.type = 'submit';
+      fakeSubmit.style.display = 'none';
+      form.appendChild(fakeSubmit);
+      fakeSubmit.click();
+      fakeSubmit.remove();
+    }
+  }
 
   render() {
 

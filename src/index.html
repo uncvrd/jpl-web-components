@@ -14,31 +14,32 @@
 
 </head>
 <body>
-
-  <jpl-horizontal-stepper>
-    <jpl-step
-      route="/"
-      state="done"
-      label="step one">
-    </jpl-step>
-    <jpl-step
-      route="/home"
-      label="step two"
-      optional="true"
-      >
-    </jpl-step>
-    <jpl-step 
-      label="step facts"
-      component="button"
-      name="route"
-      value="DisplacementDamage"
-      >
-    </jpl-step>
-    <jpl-step 
-      label="step four"
-      >
-    </jpl-step>
-  </jpl-horizontal-stepper>
+  <form action="/test" method="POST">
+    <jpl-horizontal-stepper>
+      <jpl-step
+        route="/"
+        state="done"
+        label="step one">
+      </jpl-step>
+      <jpl-step
+        route="/home"
+        label="step two"
+        optional="true"
+        >
+      </jpl-step>
+      <jpl-step 
+        label="step facts"
+        component="button"
+        name="route"
+        value="DisplacementDamage"
+        >
+      </jpl-step>
+      <jpl-step 
+        label="step four"
+        >
+      </jpl-step>
+    </jpl-horizontal-stepper>
+  </form>
 
 </body>
 </html>
