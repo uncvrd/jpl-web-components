@@ -64,6 +64,8 @@ export class Step {
       const fakeSubmit = document.createElement('button');
       fakeSubmit.type = 'submit';
       fakeSubmit.style.display = 'none';
+      fakeSubmit.name = this.name;
+      fakeSubmit.value = this.value;
       form.appendChild(fakeSubmit);
       fakeSubmit.click();
       fakeSubmit.remove();
